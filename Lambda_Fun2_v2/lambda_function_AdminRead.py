@@ -22,7 +22,7 @@ def lambda_handler(event, context):
         results = table.query(
             IndexName="Readall",
             Select = 'ALL_PROJECTED_ATTRIBUTES',
-            KeyConditionExpression=Key('GSI1PK').eq('USER'),
+            KeyConditionExpression=Key('PK').eq('USER'),
             ScanIndexForward = True
         )
         print(results['Items'])
