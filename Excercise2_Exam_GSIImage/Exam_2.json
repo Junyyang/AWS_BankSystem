@@ -1,0 +1,399 @@
+{
+  "ModelName": "Exam_2",
+  "ModelMetadata": {
+    "Author": "junyyang",
+    "DateCreated": "Feb 21, 2023, 01:18 PM",
+    "DateLastModified": "Feb 21, 2023, 01:56 PM",
+    "Description": "",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "3.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "Exam",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "Name",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "UserID",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Answer",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Correctness",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Question",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Options",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "CorrectChoice",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "GSI1PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "GSI1SK",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "ViewExamQuestions",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "INCLUDE",
+            "NonKeyAttributes": [
+              "Question",
+              "Options",
+              "CorrectChoice"
+            ]
+          }
+        },
+        {
+          "IndexName": "ViewUserAnswers",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "INCLUDE",
+            "NonKeyAttributes": [
+              "Answer",
+              "Correctness",
+              "GSI1PK"
+            ]
+          }
+        },
+        {
+          "IndexName": "ViewUserStatus",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "GSI1PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "INCLUDE",
+            "NonKeyAttributes": [
+              "Name",
+              "UserID",
+              "GSI1SK"
+            ]
+          }
+        },
+        {
+          "IndexName": "AllAnswers",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "GSI1PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "GSI1SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "PK": {
+            "S": "USER#1"
+          },
+          "SK": {
+            "S": "USER#1:E1"
+          },
+          "GSI1PK": {
+            "S": "USERINFO"
+          },
+          "GSI1SK": {
+            "S": "{takentime, score}"
+          }
+        },
+        {
+          "PK": {
+            "S": "USER#1"
+          },
+          "SK": {
+            "S": "EXAM#1:Q1"
+          },
+          "Answer": {
+            "S": "a"
+          },
+          "Correctness": {
+            "S": "True"
+          },
+          "GSI1PK": {
+            "S": "ANSWER"
+          },
+          "GSI1SK": {
+            "S": "U1E1Q1"
+          }
+        },
+        {
+          "PK": {
+            "S": "USER#1"
+          },
+          "SK": {
+            "S": "EXAM#1:Q2"
+          },
+          "Answer": {
+            "S": "b"
+          },
+          "Correctness": {
+            "S": "True"
+          },
+          "GSI1PK": {
+            "S": "ANSWER"
+          },
+          "GSI1SK": {
+            "S": "U1E1Q2"
+          }
+        },
+        {
+          "PK": {
+            "S": "USER#1"
+          },
+          "SK": {
+            "S": "USER#1"
+          },
+          "Name": {
+            "S": "AA"
+          },
+          "UserID": {
+            "S": "1111"
+          },
+          "GSI1PK": {
+            "S": "USERINFO"
+          }
+        },
+        {
+          "PK": {
+            "S": "EXAM1"
+          },
+          "SK": {
+            "S": "EXAM#1:Q1"
+          },
+          "Question": {
+            "S": "aaaa"
+          },
+          "Options": {
+            "S": "{\"A\":\"aaaa\"}"
+          },
+          "CorrectChoice": {
+            "S": "A"
+          },
+          "GSI1PK": {
+            "S": "QUESTION"
+          }
+        },
+        {
+          "PK": {
+            "S": "EXAM1"
+          },
+          "SK": {
+            "S": "EXAM#1:Q2"
+          },
+          "Question": {
+            "S": "aaaa"
+          },
+          "Options": {
+            "S": "{\"A\":\"aaaa\"}"
+          },
+          "CorrectChoice": {
+            "S": "A"
+          },
+          "GSI1PK": {
+            "S": "QUESTION"
+          }
+        },
+        {
+          "PK": {
+            "S": "USER#2"
+          },
+          "SK": {
+            "S": "USER#2:E1"
+          },
+          "GSI1PK": {
+            "S": "USERINFO"
+          },
+          "GSI1SK": {
+            "S": "{takentime, score}"
+          }
+        },
+        {
+          "PK": {
+            "S": "USER#2"
+          },
+          "SK": {
+            "S": "USER#2"
+          },
+          "Name": {
+            "S": "BB"
+          },
+          "UserID": {
+            "S": "2222"
+          },
+          "GSI1PK": {
+            "S": "USERINFO"
+          }
+        },
+        {
+          "PK": {
+            "S": "USER#2"
+          },
+          "SK": {
+            "S": "EXAM#1:Q1"
+          },
+          "Answer": {
+            "S": "a"
+          },
+          "Correctness": {
+            "S": "True"
+          },
+          "GSI1PK": {
+            "S": "ANSWER"
+          },
+          "GSI1SK": {
+            "S": "U2E1Q1"
+          }
+        },
+        {
+          "PK": {
+            "S": "USER#2"
+          },
+          "SK": {
+            "S": "EXAM#1:Q2"
+          },
+          "Answer": {
+            "S": "b"
+          },
+          "Correctness": {
+            "S": "False"
+          },
+          "GSI1PK": {
+            "S": "ANSWER"
+          },
+          "GSI1SK": {
+            "S": "U2E1Q2"
+          }
+        },
+        {
+          "PK": {
+            "S": "USER#2"
+          },
+          "SK": {
+            "S": "EXAM#1:Q3"
+          },
+          "Answer": {
+            "S": "c"
+          },
+          "Correctness": {
+            "S": "True"
+          },
+          "GSI1PK": {
+            "S": "ANSWER"
+          },
+          "GSI1SK": {
+            "S": "U2E1Q3"
+          }
+        },
+        {
+          "PK": {
+            "S": "EXAM1"
+          },
+          "SK": {
+            "S": "EXAM#1:Q3"
+          },
+          "Question": {
+            "S": "aaaa"
+          },
+          "Options": {
+            "S": "{\"A\":\"aaaa\"}"
+          },
+          "CorrectChoice": {
+            "S": "B"
+          },
+          "GSI1PK": {
+            "S": "QUESTION"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    }
+  ]
+}

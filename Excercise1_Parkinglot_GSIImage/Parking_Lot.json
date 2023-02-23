@@ -1,0 +1,237 @@
+{
+  "ModelName": "Parking_Lot",
+  "ModelMetadata": {
+    "Author": "Junyyang",
+    "DateCreated": "Feb 20, 2023, 03:57 PM",
+    "DateLastModified": "Feb 20, 2023, 04:47 PM",
+    "Description": "Exercise 1. design a parking lot\nevery parking spot has an id/number and a gps location\nevery parking spot can park one car\nevery car has a unique car plate\ntimer counting how long the car parks there",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "3.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "parkinglot",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "GSI1_PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "EnterTime",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "LeaveTime",
+          "AttributeType": "S"
+        }
+      ],
+      "TableFacets": [
+        {
+          "FacetName": "Entering",
+          "KeyAttributeAlias": {
+            "PartitionKeyAlias": "Status",
+            "SortKeyAlias": "SK"
+          },
+          "TableData": [],
+          "DataAccess": {
+            "MySql": {}
+          }
+        },
+        {
+          "FacetName": "Exiting",
+          "KeyAttributeAlias": {
+            "PartitionKeyAlias": "Plate",
+            "SortKeyAlias": "SK"
+          },
+          "TableData": [],
+          "DataAccess": {
+            "MySql": {}
+          }
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "GSI1_Enter",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "GSI1_PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        },
+        {
+          "IndexName": "GSI2_Leave",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "INCLUDE",
+            "NonKeyAttributes": [
+              "PK",
+              "EnterTime"
+            ]
+          }
+        },
+        {
+          "IndexName": "GSI_CountTime",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "INCLUDE",
+            "NonKeyAttributes": [
+              "EnterTime",
+              "LeaveTime"
+            ]
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "PK": {
+            "S": "SPOTID#1"
+          },
+          "SK": {
+            "S": "DIST#1"
+          },
+          "GSI1_PK": {
+            "S": "STATUS#vacant"
+          }
+        },
+        {
+          "PK": {
+            "S": "SPOTID#1"
+          },
+          "SK": {
+            "S": "PLATE#1"
+          },
+          "EnterTime": {
+            "S": "ISO8601#T1"
+          },
+          "LeaveTime": {
+            "S": "ISO8601#T2"
+          }
+        },
+        {
+          "PK": {
+            "S": "SPOTID#2"
+          },
+          "SK": {
+            "S": "DIST#2"
+          },
+          "GSI1_PK": {
+            "S": "STATUS#occupied"
+          }
+        },
+        {
+          "PK": {
+            "S": "SPOTID#2"
+          },
+          "SK": {
+            "S": "PLATE#2"
+          },
+          "EnterTime": {
+            "S": "ISO8601#T3"
+          }
+        },
+        {
+          "PK": {
+            "S": "SPOTID#3"
+          },
+          "SK": {
+            "S": "DIST#3"
+          },
+          "GSI1_PK": {
+            "S": "STATUS#vacant"
+          }
+        },
+        {
+          "PK": {
+            "S": "SPOTID#4"
+          },
+          "SK": {
+            "S": "DIST#4"
+          },
+          "GSI1_PK": {
+            "S": "STATUS#vacant"
+          }
+        },
+        {
+          "PK": {
+            "S": "SPOTID#5"
+          },
+          "SK": {
+            "S": "DIST#5"
+          },
+          "GSI1_PK": {
+            "S": "STATUS#vacant"
+          }
+        },
+        {
+          "PK": {
+            "S": "SPOTID#6"
+          },
+          "SK": {
+            "S": "DIST#6"
+          },
+          "GSI1_PK": {
+            "S": "STATUS#vacant"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    }
+  ]
+}
