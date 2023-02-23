@@ -1,6 +1,6 @@
 # Admin Management
 # Delete the item for User by Partition Key(emailAddress)
-# event contains "Email_address"
+# event contains "UserID"
 # return 
 
 '''
