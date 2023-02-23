@@ -25,7 +25,7 @@ def lambda_handler(event, context):
 
         userID = event['UserID']    # 'S':string
         attributeToUpdate = event['Attribute_name']
-        updateValue = event['Update_Value']
+        updateValue = event['Update_value']
         
         results = client.update_item(
             TableName = 'BussinessCard',
