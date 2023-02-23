@@ -42,13 +42,13 @@ def lambda_handler(event, context):
                     'S': str(name)
                 },
                 'Age':{
-                    'N': str(age)
+                    'S': str(age)
                 },
                 'Email':{
-                    'N': str(emailAddress)
+                    'S': str(emailAddress)
                 },
                 'Birthday':{
-                    'N': str(birthday)
+                    'S': str(birthday)
                 },
                 'Job_title':{
                     'S': str(jobTitle)
@@ -60,10 +60,10 @@ def lambda_handler(event, context):
                     'S': str(city)
                 },
                 'Phone_number':{
-                    'N': str(phoneNumber)
+                    'S': str(phoneNumber)
                 },
                 'Profile_picture':{
-                    'N': str(profilePicture)
+                    'S': str(profilePicture)
                 }
             }
         )

@@ -6,7 +6,7 @@
 
     },
     {
-        "PK": "USER#1",
+        "PK": "USER",
         "SK": "USERID#1",
         "Name": "aaaa",
         "Age": "10",
@@ -16,11 +16,10 @@
         "City":"Acity",
         "Email": "aaaa@gmail.com",
         "Phone_number": "11111111111111",
-        "Picture_profile": "PIC#1",
-        "GSI1PK": "USER"
+        "Picture_profile": "PIC#1"
     },
     {
-        "PK": "USER#2",
+        "PK": "USER",
         "SK": "USERID#2",
         "Name": "bbbb",
         "Age": "20",
@@ -30,11 +29,10 @@
         "City":"Bcity",
         "Email": "bbbb@gmail.com",
         "Phone_number": "22222222222222",
-        "Picture_profile": "PIC#2",
-        "GSI1PK": "USER"
+        "Picture_profile": "PIC#2"
     },
     {
-        "PK": "USER#3",
+        "PK": "USER",
         "SK": "USERID#3",
         "Name": "cccc",
         "Age": "30",
@@ -44,7 +42,6 @@
         "City":"Ccity",
         "Email": "cccc@gmail.com",
         "Phone_number": "33333333333333",
-        "Picture_profile": "PIC#3",
-        "GSI1PK": "USER"
+        "Picture_profile": "PIC#3"
     }
 ]
