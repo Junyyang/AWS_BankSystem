@@ -1,5 +1,5 @@
 ﻿# AWS_BankSystem
----
+
 ## Access pattern for admin and users to manage DynamoDB.
 
 Access for admin:
@@ -18,7 +18,8 @@ Access for user:
 - Delete item
 
 Inputs from APIs RESTful method are specified in the code.
----
+
+
 ## Problems remains to be solved
 - If the attribute upload from API is vacant, how to deal with it.
  - assigned with None?
