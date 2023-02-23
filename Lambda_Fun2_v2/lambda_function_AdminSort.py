@@ -33,7 +33,8 @@ def lambda_handler(event, context):
 
         dynamodb = boto3.resource(
             'dynamodb', 
-            region_name='us-east-1')
+            region_name='us-east-1'
+        )
         table = dynamodb.Table('BussinessCard')
 
         results = table.query(
