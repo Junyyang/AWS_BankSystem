@@ -28,7 +28,7 @@ def lambda_handler(event, context):
         updateValue = event['Update_Value']
         
         results = client.update_item(
-            TableName = 'BankSystem',
+            TableName = 'BussinessCard',
             Key = {
                 'PK': {'S': str('USER')},
                 'SK': {'S': str(userID)}

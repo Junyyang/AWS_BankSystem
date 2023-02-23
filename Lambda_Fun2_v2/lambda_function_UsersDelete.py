@@ -26,7 +26,7 @@ def lambda_handler(event, context):
         sk = event['UserID']    # 'S':string
 
         results = client.delete_item(
-            TableName = 'BankSystem',
+            TableName = 'BussinessCard',
             Key = {
                 'PK': {'S': str('USER')},
                 'SK': {'S': str(sk)}
