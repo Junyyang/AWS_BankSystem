@@ -21,22 +21,22 @@ Inputs from APIs RESTful method are specified in the code.
 
 ## Main table & GSIs
 - Main Table
-![main table](Main_table.png)
+![main table](./BussinessCardGSIImage/GSI_readall.png)
 
 - GSI: ReadAll
-![GSI: ReadAll](GSI_readall.png)
+![GSI: ReadAll](./BussinessCardGSIImage/GSI_readall.png)
 
 - GSI: SortByAge
-![GSI: SortByAge](GSI_sortbyage.png)
+![GSI: SortByAge](./BussinessCardGSIImage/GSI_sortbyage.png)
 
 - GSI: SortByJobTitle
-![GSI: SortByJobTitle](GSI_sortbyjobtitle.png)
+![GSI: SortByJobTitle](./BussinessCardGSIImage/GSI_sortbyjobtitle.png)
 
 - GSI: SortByEmployer
-![GSI: SortByEmployer](GSI_sortbyemployer.png)
+![GSI: SortByEmployer](./BussinessCardGSIImage/GSI_sortbyemployer.png)
 
 - GSI: SortByCity
-![GSI: SortByCity](GSI_sortbycity.png)
+![GSI: SortByCity](./BussinessCardGSIImage/GSI_sortbycity.png)
 
 
 
