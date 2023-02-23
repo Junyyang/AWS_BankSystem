@@ -28,8 +28,8 @@ def lambda_handler(event, context):
                 'body': "Not valid sorted attribute"
                 }
             return response
-        
-        ascendStatus = event["Ascending"]
+        statusdict = {"True": True, "False": False}
+        ascendStatus = statusdict[event["Ascending"]]
 
         dynamodb = boto3.resource(
             'dynamodb', 

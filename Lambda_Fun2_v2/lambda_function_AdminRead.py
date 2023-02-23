@@ -3,9 +3,6 @@
 
 # Restful: GET Method
 
-# Return ??? how to return the whole table 
-# #TODO
-
 
 import boto3
 import json
