@@ -1,25 +1,25 @@
 ﻿# AWS_BankSystem
 ---
-## Lambda functions for admin and users to manage DynamoDB.
+## Access pattern for admin and users to manage DynamoDB.
 
-Options for admin:
-- Create table
+Access for admin:
+- Create table(Creat GSI)
 - Create item
-- Read all items by .scan()
-- Read items sorted by a specific attribute by GSI and .query()
+- Read all items
+- Read items sorted by a GSI "IndexName"
 - Update item
 - Delete table
 - Delete item
 
-Options for user:
+Access for user:
 - Create item
 - Read item
 - Update item
 - Delete item
 
 Inputs from APIs RESTful method are specified in the code.
-  
 ---
 ## Problems remains to be solved
-- It costs a lot of time for DynamoDB to be ready for the next usage when creating GSI. Normally it is much more than the time limit set for Lambda function. 
-- Not sure whether it is appropriate to set up the static sort key to read out all the items in table.
+- If the attribute upload from API is vacant, how to deal with it.
+ - assigned with None?
+- How to load the profile picture? S3 Bucket?

@@ -1,0 +1,50 @@
+[
+    {
+        "PK": "ADMIN#1",
+        "SK": "ADMINID#1",
+        "GSI1PK": "ADMIN"
+
+    },
+    {
+        "PK": "USER#1",
+        "SK": "USERID#1",
+        "Name": "aaaa",
+        "Age": "10",
+        "Birthday": "11112233",
+        "Job_title": "manager",
+        "Employer":"AAAA",
+        "City":"Acity",
+        "Email": "aaaa@gmail.com",
+        "Phone_number": "11111111111111",
+        "Picture_profile": "PIC#1",
+        "GSI1PK": "USER"
+    },
+    {
+        "PK": "USER#2",
+        "SK": "USERID#2",
+        "Name": "bbbb",
+        "Age": "20",
+        "Birthday": "11113344",
+        "Job_title": "lawer",
+        "Employer":"BBBB",
+        "City":"Bcity",
+        "Email": "bbbb@gmail.com",
+        "Phone_number": "22222222222222",
+        "Picture_profile": "PIC#2",
+        "GSI1PK": "USER"
+    },
+    {
+        "PK": "USER#3",
+        "SK": "USERID#3",
+        "Name": "cccc",
+        "Age": "30",
+        "Birthday": "11114455",
+        "Job_title": "Engineer",
+        "Employer":"CCCC",
+        "City":"Ccity",
+        "Email": "cccc@gmail.com",
+        "Phone_number": "33333333333333",
+        "Picture_profile": "PIC#3",
+        "GSI1PK": "USER"
+    }
+]
