@@ -14,8 +14,14 @@ def lambda_handler(event, context):
         print("This is a POST request for Admin read table")
 
         sortedByAttri = event["SortedBy"]
+        indexdict = {
+            'Age': 'Age',
+            'Job_title': 'JobTitle',
+            'Employer': 'Employer',
+            'City': 'City'
+        }
         if sortedByAttri in ['Age', 'Job_title', 'Employer', 'City']:
-            sortIndex = "SortBy" + sortedByAttri
+            sortIndex = "SortBy" + indexdict[sortedByAttri]
         else:
             response = {
                 'statusCode': 404,

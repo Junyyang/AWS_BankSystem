@@ -1,10 +1,8 @@
-# User Management
-# Delete the item for User by Partition Key(emailAddress) AND Sort key
-# event contains "Email_address"
-# return 
+# Users Management
+# Read the item for User by Partition Key(emailAddress)
+# event contains "emailAddress"
 
-# Restful API: POST method
-
+# API method: POST method
 '''
 N (string) --
 An attribute of type Number. For example:
@@ -13,32 +11,34 @@ An attribute of type Number. For example:
 Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and libraries. 
 However, DynamoDB treats them as number type attributes for mathematical operations.
 '''
-
 import boto3
-
+from botocore.exceptions import ClientError
+import json
 
 def lambda_handler(event, context):
     if event:
-        print("This is a POST request for detele item")
+        print("This is a POST request for user read items")
 
         client = boto3.client('dynamodb', region_name = 'us-east-1')
 
         emailAddress = event['Email_address']    # 'S':string
 
-        results = client.delete_item(
-            TableName = 'BankSystem',
-            Key = {
-                'EmailAddress': {'S': str(emailAddress)},
-                'StaticSortKey': {'S': str('bussiness_card')}
-            }
-        )
-
-        print(results)
+        try:
+            results = client.get_item(
+                TableName = 'BankSystem',
+                Key = {
+                        'EmailAddress': {'S': str(emailAddress)},
+                        'StaticSortKey': {'S': str('bussiness_card')}
+                    }
+                )
+        except ClientError as e:
+            print(e.response['Error']['Message'])
+        else:
+            print(results)
 
         response = {
             'statusCode': 200,
-            'body': "successfully deleted the item of {emailaddress}!"\
-                .format(emailaddress = emailAddress)
+            'body': json.dumps(results["Item"])
             }
 
         return response

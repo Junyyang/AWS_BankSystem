@@ -1,6 +1,6 @@
 # Admin Management
-# Create the item (User) by Partition Key(emailAddress)
-# event contains "Email_address, Name, Age, Birthday, Job_title, Employer, City, Phone_number"
+# Create the item (User) by Partition Key PK: UserID
+# event contains "UserID, Email_address, Name, Age, Birthday, Job_title, Employer, City, Phone_number, Profile_picture"
 
 # Restful: POST Method
 
