@@ -2,8 +2,14 @@
 # Read all the items
 
 # Restful: GET Method
-
-
+'''
+Test Json
+{
+  "key1": "value1",
+  "key2": "value2",
+  "key3": "value3"
+}
+'''
 import boto3
 import json
 from boto3.dynamodb.conditions import Key

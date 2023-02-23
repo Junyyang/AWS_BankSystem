@@ -4,6 +4,13 @@
 # return 
 
 # Restful API: POST method
+'''
+Test Json
+{
+  "UserID": "USERID#2"
+}
+'''
+
 
 '''
 N (string) --

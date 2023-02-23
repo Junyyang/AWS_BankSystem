@@ -3,6 +3,21 @@
 # event contains "UserID, Email_address, Name, Age, Birthday, Job_title, Employer, City, Phone_number, Profile_picture"
 
 # Restful: POST Method
+'''
+Test Json
+{
+  "UserID": "USERID#1",
+  "Email_address": "aaaa@gmail.com",
+  "Name": "aaaa",
+  "Age": "10",
+  "Birthday": "11112233",
+  "Job_title": "Engineer",
+  "Employer": "AAAA",
+  "City": "Acity",
+  "Phone_number": "11111111111111",
+  "Profile_picture": "PIC#1"
+}
+'''
 
 import boto3
 

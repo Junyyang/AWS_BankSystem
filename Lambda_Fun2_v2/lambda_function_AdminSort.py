@@ -4,6 +4,14 @@
 
 # Restful API: POST method
 
+'''
+Test Json
+{
+  "SortedBy": "City",
+  "Ascending": "True"
+}
+'''
+
 
 import boto3
 from boto3.dynamodb.conditions import Key

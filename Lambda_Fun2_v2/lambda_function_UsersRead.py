@@ -3,6 +3,15 @@
 # event contains "emailAddress"
 
 # API method: POST method
+
+'''
+Test Json
+{
+  "UserID": "USERID#2"
+}
+'''
+
+
 '''
 N (string) --
 An attribute of type Number. For example:

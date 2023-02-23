@@ -6,6 +6,22 @@
 # Restful API: POST method
 
 '''
+Test Json
+{
+  "UserID": "USERID#2",
+  "Email_address": "bbbb@gmail.com",
+  "Name": "bbbb",
+  "Age": "20",
+  "Birthday": "11113344",
+  "Job_title": "lawer",
+  "Employer": "BBBB",
+  "City": "Bcity",
+  "Phone_number": "22222222222222",
+  "Profile_picture": "PIC#2"
+}
+'''
+
+'''
 N (string) --
 An attribute of type Number. For example:
 
