@@ -7,18 +7,20 @@
 
 '''
 Test Json
-{
-  "UserID": "USERID#2",
-  "Email_address": "bbbb@gmail.com",
-  "Name": "bbbb",
-  "Age": "20",
-  "Birthday": "11113344",
-  "Job_title": "lawer",
-  "Employer": "BBBB",
-  "City": "Bcity",
-  "Phone_number": "22222222222222",
-  "Profile_picture": "PIC#2"
-}
+[
+    {
+        "UserID": "USERID#4",
+        "Email_address": "dddd@gmail.com",
+        "Name": "dddd",
+        "Age": "40",
+        "Birthday": "111122399",
+        "Job_title": "FFFF",
+        "Employer": "FFFF",
+        "City": "Fcity",
+        "Phone_number": "444444444444444444",
+        "Profile_picture": "PIC#4"
+    }
+]
 '''
 
 '''
@@ -37,20 +39,22 @@ import json
 def lambda_handler(event, context):
     if event:
         print("This is a POST request")
+        
 
         client = boto3.client('dynamodb', region_name = 'us-east-1')
+        postINFO = json.loads(event['body'])[0]
 
         # email_address
-        sk = event['UserID']
-        emailAddress = event['Email_address']    # 'S':string
-        name = event['Name']            # 'S':string
-        age = event['Age']                      # 'N':strings, DynamoDB treats them as number type  
-        birthday = event['Birthday']            # 'N':strings, DynamoDB treats them as number type    YYYYMMDD
-        jobTitle = event['Job_title']            # 'S':string
-        employer = event['Employer']            # 'S':string
-        city = event['City']                    # 'S':string
-        phoneNumber = event['Phone_number']      # 'N':strings, DynamoDB treats them as number type
-        profilePicture = event['Profile_picture']
+        sk = postINFO['UserID']
+        emailAddress = postINFO['Email_address']    # 'S':string
+        name = postINFO['Name']            # 'S':string
+        age = postINFO['Age']                      # 'N':strings, DynamoDB treats them as number type  
+        birthday = postINFO['Birthday']            # 'N':strings, DynamoDB treats them as number type    YYYYMMDD
+        jobTitle = postINFO['Job_title']            # 'S':string
+        employer = postINFO['Employer']            # 'S':string
+        city = postINFO['City']                    # 'S':string
+        phoneNumber = postINFO['Phone_number']      # 'N':strings, DynamoDB treats them as number type
+        profilePicture = postINFO['Profile_picture']
 
         results = client.put_item(
             TableName='BussinessCard',

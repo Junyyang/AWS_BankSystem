@@ -6,9 +6,11 @@
 
 '''
 Test Json
-{
-  "UserID": "USERID#2"
-}
+[
+    {
+        "UserID": "USERID#2"
+    }
+]
 '''
 
 
@@ -29,8 +31,8 @@ def lambda_handler(event, context):
         print("This is a POST request for user read items")
 
         client = boto3.client('dynamodb', region_name = 'us-east-1')
-
-        userID = event['UserID']    # 'S':string
+        postINFO = json.loads(event['body'])[0]
+        userID = postINFO['UserID']    # 'S':string
 
         try:
             results = client.get_item(

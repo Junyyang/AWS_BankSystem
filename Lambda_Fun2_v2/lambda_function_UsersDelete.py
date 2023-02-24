@@ -6,9 +6,11 @@
 # Restful API: POST method
 '''
 Test Json
-{
-  "UserID": "USERID#2"
-}
+[
+    {
+        "UserID": "USERID#4"
+    }
+]
 '''
 
 
@@ -22,6 +24,7 @@ However, DynamoDB treats them as number type attributes for mathematical operati
 '''
 
 import boto3
+import json
 
 
 def lambda_handler(event, context):
@@ -29,8 +32,8 @@ def lambda_handler(event, context):
         print("This is a POST request for detele item")
 
         client = boto3.client('dynamodb', region_name = 'us-east-1')
-
-        sk = event['UserID']    # 'S':string
+        postINFO = json.loads(event['body'])[0]
+        sk = postINFO['UserID']    # 'S':string
 
         results = client.delete_item(
             TableName = 'BussinessCard',

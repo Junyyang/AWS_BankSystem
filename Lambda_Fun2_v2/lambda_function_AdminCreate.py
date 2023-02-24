@@ -5,39 +5,47 @@
 # Restful: POST Method
 '''
 Test Json
-{
-  "UserID": "USERID#1",
-  "Email_address": "aaaa@gmail.com",
-  "Name": "aaaa",
-  "Age": "10",
-  "Birthday": "11112233",
-  "Job_title": "Engineer",
-  "Employer": "AAAA",
-  "City": "Acity",
-  "Phone_number": "11111111111111",
-  "Profile_picture": "PIC#1"
-}
+[
+    {
+        "UserID": "USERID#1",
+        "Email_address": "aaaa@gmail.com",
+        "Name": "aaaa",
+        "Age": "10",
+        "Birthday": "11112233",
+        "Job_title": "Engineer",
+        "Employer": "AAAA",
+        "City": "Acity",
+        "Phone_number": "11111111111111",
+        "Profile_picture": "PIC#1"
+    }
+]
 '''
 
 import boto3
+import json
 
 def lambda_handler(event, context):
     if event:
+        print(" ")
+        print(" ")
+        print("=======================")
         print("This is a POST request")
+        print("event body: ", json.loads(event['body'])[0])
 
         client = boto3.client('dynamodb', region_name = 'us-east-1')
+        postINFO = json.loads(event['body'])[0]
 
         # email_address
-        sk = event['UserID']
-        emailAddress = event['Email_address']    # 'S':string
-        name = event['Name']            # 'S':string
-        age = event['Age']                      # 'N':strings, DynamoDB treats them as number type  
-        birthday = event['Birthday']            # 'N':strings, DynamoDB treats them as number type    YYYYMMDD
-        jobTitle = event['Job_title']            # 'S':string
-        employer = event['Employer']            # 'S':string
-        city = event['City']                    # 'S':string
-        phoneNumber = event['Phone_number']      # 'N':strings, DynamoDB treats them as number type
-        profilePicture = event['Profile_picture'] 
+        sk = postINFO['UserID']
+        emailAddress = postINFO['Email_address']    # 'S':string
+        name = postINFO['Name']            # 'S':string
+        age = postINFO['Age']                      # 'N':strings, DynamoDB treats them as number type  
+        birthday = postINFO['Birthday']            # 'N':strings, DynamoDB treats them as number type    YYYYMMDD
+        jobTitle = postINFO['Job_title']            # 'S':string
+        employer = postINFO['Employer']            # 'S':string
+        city = postINFO['City']                    # 'S':string
+        phoneNumber = postINFO['Phone_number']      # 'N':strings, DynamoDB treats them as number type
+        profilePicture = postINFO['Profile_picture'] 
 
         # TODO
         # if event['attribute'] == None, how to handle

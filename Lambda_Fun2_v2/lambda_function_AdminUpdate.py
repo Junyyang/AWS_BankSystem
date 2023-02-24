@@ -7,11 +7,13 @@
 
 '''
 Test Json
-{
-  "UserID": "USERID#1",
-  "Attribute_name": "Age",
-  "Update_value": 11
-}
+[
+    {
+        "UserID": "USERID#2",
+        "Attribute_name": "Age",
+        "Update_value": 22
+    }
+]
 '''
 
 '''
@@ -29,12 +31,13 @@ import json
 def lambda_handler(event, context):
     if event:
         print("This is a POST request for attribute update")
+        print(event)
 
         client = boto3.client('dynamodb', region_name = 'us-east-1')
-
-        userID = event['UserID']    # 'S':string
-        attributeToUpdate = event['Attribute_name']
-        updateValue = event['Update_value']
+        postINFO = event[0]
+        userID = postINFO['UserID']    # 'S':string
+        attributeToUpdate = postINFO['Attribute_name']
+        updateValue = postINFO['Update_value']
         attributeType = 'S'
 
         # if attributeToUpdate in ['Email_address', 'Name', 'Job_title', 'City', 'Phone_number']:

@@ -6,10 +6,12 @@
 
 '''
 Test Json
-{
-  "SortedBy": "City",
-  "Ascending": "True"
-}
+[
+    {
+        "SortedBy": "City",
+        "Ascending": "True"
+    }
+]
 '''
 
 

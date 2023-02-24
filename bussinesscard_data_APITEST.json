@@ -1,13 +1,6 @@
 [
     {
-        "PK": "ADMIN#1",
-        "SK": "ADMINID#1",
-        "GSI1PK": "ADMIN"
-
-    },
-    {
-        "PK": "USER",
-        "SK": "USERID#1",
+        "UserID": "USERID#1",
         "Name": "aaaa",
         "Age": "10",
         "Birthday": "11112233",
@@ -19,8 +12,7 @@
         "Profile_picture": "PIC#1"
     },
     {
-        "PK": "USER",
-        "SK": "USERID#2",
+        "UserID": "USERID#2",
         "Name": "bbbb",
         "Age": "20",
         "Birthday": "11113344",
@@ -32,8 +24,7 @@
         "Profile_picture": "PIC#2"
     },
     {
-        "PK": "USER",
-        "SK": "USERID#3",
+        "UserID": "USERID#3",
         "Name": "cccc",
         "Age": "30",
         "Birthday": "11114455",
@@ -43,5 +34,17 @@
         "Email_address": "cccc@gmail.com",
         "Phone_number": "33333333333333",
         "Profile_picture": "PIC#3"
+    },
+    {
+        "UserID": "USERID#4",
+        "Email_address": "dddd@gmail.com",
+        "Name": "dddd",
+        "Age": "40",
+        "Birthday": "111122399",
+        "Job_title": "FFFF",
+        "Employer": "FFFF",
+        "City": "Fcity",
+        "Phone_number": "444444444444444444",
+        "Profile_picture": "PIC#4"
     }
 ]

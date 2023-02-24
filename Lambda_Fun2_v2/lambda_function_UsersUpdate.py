@@ -7,11 +7,13 @@
 
 '''
 Test Json
-{
-  "UserID": "USERID#2",
-  "Attribute_name": "Age",
-  "Update_value": 22
-}
+[
+    {
+        "UserID": "USERID#2",
+        "Attribute_name": "Age",
+        "Update_value": 22
+    }
+]
 '''
 
 '''
@@ -24,6 +26,7 @@ However, DynamoDB treats them as number type attributes for mathematical operati
 '''
 
 import boto3
+import json
 
 
 def lambda_handler(event, context):
@@ -31,10 +34,10 @@ def lambda_handler(event, context):
         print("This is a POST request for attribute update")
 
         client = boto3.client('dynamodb', region_name = 'us-east-1')
-
-        userID = event['UserID']    # 'S':string
-        attributeToUpdate = event['Attribute_name']
-        updateValue = event['Update_value']
+        postINFO = json.loads(event['body'])[0]
+        userID = postINFO['UserID']    # 'S':string
+        attributeToUpdate = postINFO['Attribute_name']
+        updateValue = postINFO['Update_value']
         
         results = client.update_item(
             TableName = 'BussinessCard',
